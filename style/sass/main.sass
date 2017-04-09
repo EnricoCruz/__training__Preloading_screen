@@ -1,0 +1,77 @@
+$lightgrey: #c0c6cb
+$lightblue: #5eb7e8
+$blue: #2a86b9
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  color: white
+.container
+  height: 100vh
+  background: black
+  // border: 2px solid red
+  position: relative
+
+.load-box
+  width: 600px
+  margin:  auto
+  padding: 30px
+  opacity: 1
+  position: absolute
+  top: 50%
+  left: 50%
+
+  transform: translateX(-50%) translateY(-55%)
+  transition: opacity .4s
+
+.load-bar
+  background: $lightgrey
+  width: 100%
+  height: 34px
+  // padding: 3px 4px
+  border-radius: 15px
+  border: 3px solid $lightblue
+  position: relative
+  .load-progress
+    background: $lightblue
+    width: 10%
+    height: 100%
+    border-radius: 13px
+  #load-info
+    width: 100%
+    position: absolute
+    top: 1%
+    // left: 50%
+    text-align: center
+    color: white
+    font-size: 1.5em
+.info
+  padding: 30px
+  h3
+    margin: 15px auto
+  p
+    margin: 7px auto
+
+
+#load-text
+  text-align: center
+  color: $blue
+  line-height: 120%
+  margin: 0px auto 20px auto
+  animation: cargando 2s linear infinite alternate
+
+
+
+
+@keyframes cargando
+  0%
+    color: $lightblue
+  50%
+    color: white
+    transform: rotateY(0deg)
+  70%
+    color: $lightblue
+  100%
+    color: $lightblue
+    transform: rotateY(180deg)

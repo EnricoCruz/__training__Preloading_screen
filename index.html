@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="style/css/main.css">
+  <script>
+    if(document.readyState=="interactive"){
+      loadProgress();
+    }
+  </script>
+</head>
+<body ondblclick="comenzarProceso()">
+  <div class="container">
+    <div class="load-box">
+      <div id="load-text">
+        Cargando...
+      </div>
+      <div class="load-bar">
+        <div class="load-progress"></div>
+        <div id="load-info">10%
+        </div>
+      </div>
+      <div class="info">
+        <h3>
+          Animación sencilla de pre-carga de página:
+        </h3>
+        <p>
+          Para comenzar a cargar la animación simplemente haz doble click en
+          cualquier parte del documento.
+        </p>
+        <p>
+          Para finalizar la animación, haga doble click de nuevo.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  var barra = document.getElementsByClassName("load-progress")[0];
+  var porcentaje = document.getElementById("load-info");
+  var lvl = 10;
+  var myInterval;
+
+  function intervalo(){
+     myInterval = setInterval(increaselvl, 23);
+
+  }
+
+  function loadProgress(){
+    if(lvl>= 100){
+       /*//codico completado, borrar codigo de abajo hasta el siguiente if y descomentar este.
+      var box = document.getElementsByClassName("load-box")[0]
+      box.style.opacity="0";
+      window.setTimeout(function(){box.style.display="none"}, 150);
+      clearInterval(myInterval);*/
+
+      window.setTimeout(function(){lvl=0}, 500);
+      intervalo();
+
+
+      clearInterval(myInterval);}
+    else if(lvl<100) {
+      intervalo();
+    }
+  }
+
+  function increaselvl(){
+    var temp = lvl;
+    if (temp <= 100){
+      porcentaje.innerHTML= temp + "%";
+      barra.style.width= temp + "%";
+      temp++;
+      lvl = temp;
+    }
+    else {loadProgress()}
+  }
+
+  // window.ondblclick = comenzarProceso();
+
+  function comenzarProceso(){
+    if (myInterval!=undefined) {
+      clearInterval(myInterval);
+      myInterval="";
+    }
+    else if(myInterval==undefined){loadProgress();}
+  }
+</script>
+</html>
